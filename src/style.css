@@ -1,0 +1,92 @@
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Pixel";
+  src: url("/pixel-font.ttf") format("truetype");
+}
+
+body {
+  background: #303030;
+  color: white;
+  margin: 0;
+  overflow: hidden;
+}
+
+#visualizer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  padding: 0 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+
+  text-align: center;
+  pointer-events: none;
+}
+
+#text {
+  font-family: "Pixel", sans-serif;
+  font-size: clamp(20px, 5vw, 40px);
+  font-weight: 600;
+}
+
+#text::after {
+  content: "_";
+  animation: blink 0.8s infinite;
+}
+
+#play-button {
+  width: clamp(200px, 50vw, 400px);
+  height: clamp(200px, 50vw, 400px);
+
+  padding: 0;
+  border: none;
+
+  overflow: hidden;
+  cursor: pointer;
+
+  pointer-events: auto;
+
+  transition: transform 0.25s ease;
+}
+
+#play-button:hover {
+  transform: scale(1.04);
+}
+
+#play-button:active {
+  transform: scale(0.97);
+}
+
+#play-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
